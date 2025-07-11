@@ -1,0 +1,36 @@
+// Travel Planner State Flow
+digraph {
+	rankdir=TB
+	initial [label="🚀 Initial State
+{messages: []}" fillcolor=lightyellow]
+	budget_collected [label="💰 Budget Collected
+{budget: \"low/medium/high\"}" fillcolor=lightblue]
+	duration_collected [label="📅 Duration Collected
+{duration: \"5\"}" fillcolor=lightblue]
+	interests_collected [label="🌟 Interests Collected
+{interests: [\"history\", \"food\"]}" fillcolor=lightblue]
+	destinations_suggested [label="🔍 Destinations Suggested
+{suggestions: [\"Paris\", \"Rome\"]}" fillcolor=lightblue]
+	city_selected [label="🎯 City Selected
+{selected_city: \"Paris\"}" fillcolor=lightblue]
+	itinerary_created [label="📝 Itinerary Created
+{itinerary: \"Day 1: ...\"}" fillcolor=lightblue]
+	tools_called [label="🛠️ Tools Called
+{weather, attractions, etc.}" fillcolor=lightblue]
+	rag_completed [label="📚 RAG Completed
+{enhanced_info}" fillcolor=lightblue]
+	final [label="✅ Final State
+{complete: true}" fillcolor=lightgreen]
+	initial -> budget_collected [label=ask_budget]
+	budget_collected -> duration_collected [label=ask_duration]
+	duration_collected -> interests_collected [label=ask_interests]
+	interests_collected -> destinations_suggested [label=suggest_destinations]
+	destinations_suggested -> city_selected [label=select_city]
+	city_selected -> itinerary_created [label=create_itinerary]
+	itinerary_created -> tools_called [label=call_tools]
+	tools_called -> rag_completed [label=rag_follow_up]
+	rag_completed -> final [label=END]
+	fontname="Arial Bold" fontsize=16 label="Travel Planner AI Agent - State Flow Diagram
+
+PlannerState Transitions Through LangGraph Nodes" labelloc=t
+}

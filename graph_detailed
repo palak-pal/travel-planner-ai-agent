@@ -1,0 +1,50 @@
+// Travel Planner AI Agent - Detailed Workflow
+digraph {
+	rankdir=LR
+	subgraph cluster_0 {
+		fillcolor=lightyellow label="Phase 1: User Input Collection" style=filled
+		ask_budget [label="💰 Budget
+(low/medium/high)" fillcolor=lightblue]
+		ask_duration [label="📅 Duration
+(days)" fillcolor=lightblue]
+		ask_interests [label="🌟 Interests
+(activities)" fillcolor=lightblue]
+	}
+	subgraph cluster_1 {
+		fillcolor=lightcyan label="Phase 2: AI-Powered Selection" style=filled
+		suggest_destinations [label="🔍 Destination
+Suggestions
+(FAISS + Embeddings)" fillcolor=orange]
+		select_city [label="🎯 City
+Selection
+(User Choice)" fillcolor=orange]
+	}
+	subgraph cluster_2 {
+		fillcolor=lightpink label="Phase 3: Planning & Tools" style=filled
+		create_itinerary [label="📝 Itinerary
+Generation
+(Gemini AI)" fillcolor=lightgreen]
+		call_tools [label="🛠️ External
+Tools
+(APIs)" fillcolor=lightgreen]
+	}
+	subgraph cluster_3 {
+		fillcolor=lightgray label="Phase 4: Knowledge & Completion" style=filled
+		rag_follow_up [label="📚 RAG
+Follow-up
+(Vector Search)" fillcolor=purple]
+		END [label="✅ Complete
+(State: Complete)" fillcolor=lightgreen]
+	}
+	ask_budget -> ask_duration [label="State: budget"]
+	ask_duration -> ask_interests [label="State: duration"]
+	ask_interests -> suggest_destinations [label="State: interests"]
+	suggest_destinations -> select_city [label="State: suggestions"]
+	select_city -> create_itinerary [label="State: selected_city"]
+	create_itinerary -> call_tools [label="State: itinerary"]
+	call_tools -> rag_follow_up [label="State: tool_results"]
+	rag_follow_up -> END [label="State: complete"]
+	fontname="Arial Bold" fontsize=16 label="Travel Planner AI Agent - Detailed LangGraph Workflow
+
+Multi-Phase Processing with State Management" labelloc=t
+}

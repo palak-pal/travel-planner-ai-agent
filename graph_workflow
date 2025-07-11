@@ -1,0 +1,34 @@
+// Travel Planner AI Agent - LangGraph Workflow
+digraph {
+	rankdir=TB
+	node [fillcolor=lightblue fontname=Arial fontsize=10 shape=box style="rounded,filled"]
+	ask_budget [label="💰 Ask Budget
+(low/medium/high)"]
+	ask_duration [label="📅 Ask Duration
+(number of days)"]
+	ask_interests [label="🌟 Ask Interests
+(comma-separated)"]
+	suggest_destinations [label="🔍 Suggest Destinations
+(vector embeddings)"]
+	select_city [label="🎯 Select City
+(user choice)"]
+	create_itinerary [label="📝 Create Itinerary
+(Gemini AI)"]
+	call_tools [label="🛠️ Call Tools
+(weather, attractions, etc.)"]
+	rag_follow_up [label="📚 RAG Follow-up
+(vector search)"]
+	END [label="✅ End
+(workflow complete)" fillcolor=lightgreen]
+	ask_budget -> ask_duration
+	ask_duration -> ask_interests
+	ask_interests -> suggest_destinations
+	suggest_destinations -> select_city
+	select_city -> create_itinerary
+	create_itinerary -> call_tools
+	call_tools -> rag_follow_up
+	rag_follow_up -> END
+	fontname="Arial Bold" fontsize=16 label="Travel Planner AI Agent - LangGraph Workflow
+
+State Management & Multi-Node Processing" labelloc=t
+}
