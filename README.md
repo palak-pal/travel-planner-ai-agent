@@ -9,7 +9,7 @@ A sophisticated AI-powered travel planning application that creates personalized
 
 ## 🚀 Live Demo
 
-**[Try the Live App](https://palak-pal-travel-planner-ai-agent-app-streamlit-xxxxx.streamlit.app/)**
+**[Try the Live App](https://travel-planner-ai-agent.streamlit.app/)**
 
 ## ✨ Features
 
