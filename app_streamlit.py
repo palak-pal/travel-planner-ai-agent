@@ -15,9 +15,19 @@ st.set_page_config(page_title="AI Travel Planner", page_icon="🌟", layout="cen
 # Initialize LLM with caching
 @st.cache_resource
 def get_llm():
+    # Get API key from environment or Streamlit secrets
+    api_key = os.environ.get("GOOGLE_GEMINI_API_KEY")
+    if not api_key:
+        # Try to get from Streamlit secrets
+        try:
+            api_key = st.secrets["GOOGLE_GEMINI_API_KEY"]
+        except:
+            st.error("❌ Google Gemini API key not found! Please set GOOGLE_GEMINI_API_KEY in environment variables or Streamlit secrets.")
+            st.stop()
+    
     return ChatGoogleGenerativeAI(
         model="gemini-1.5-flash-latest",
-        google_api_key="AIzaSyCj8z2l6ukPj-gqQeNBDikNO4WAXeUjk34",
+        google_api_key=api_key,
         temperature=0.5
     )
 

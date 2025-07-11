@@ -3,9 +3,13 @@ from langchain_core.prompts import ChatPromptTemplate
 from langchain_google_genai import ChatGoogleGenerativeAI
 from .tools import weather_tool, attractions_tool, transportation_tool, restaurant_tool, accommodation_tool
 
+# Get API key from environment
+import os
+api_key = os.environ.get("GOOGLE_GEMINI_API_KEY", "demo_key")
+
 llm = ChatGoogleGenerativeAI(model="gemini-1.5-flash-latest",
-                             google_api_key= "AIzaSyCj8z2l6ukPj-gqQeNBDikNO4WAXeUjk34",
-                              temperature=0.5)
+                             google_api_key=api_key,
+                             temperature=0.5)
 itinerary_prompt = ChatPromptTemplate.from_messages([
     ("system", """
 You are an ultra-premium luxury travel assistant, specializing in crafting immersive, tailor-made itineraries.

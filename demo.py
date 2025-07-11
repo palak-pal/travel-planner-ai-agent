@@ -7,8 +7,8 @@ from datetime import datetime
 # --- Configuration ---
 # WARNING: NEVER HARDCODE API KEYS IN PRODUCTION CODE.
 # Use environment variables (e.g., os.getenv("GOOGLE_PLACES_API_KEY"))
-# For demonstration purposes, we're using the provided key.
-GOOGLE_MAPS_API_KEY = "AIzaSyBUHqCpupMaG_qPwayW35nfTjMnWQi1bF8"
+# For demonstration purposes, we're using a demo key.
+GOOGLE_MAPS_API_KEY = os.environ.get("GOOGLE_MAPS_API_KEY", "demo_key")
 # You'd also need an API key for a weather service, e.g., OpenWeatherMap
 OPENWEATHER_API_KEY = "c7dde16d4a66ba53f9014d43d888faca" # Replace with your actual key if using
 

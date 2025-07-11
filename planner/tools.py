@@ -80,12 +80,10 @@ class AttractionsTool:
         # Fallback to API if not found in dataset
         api_key = os.environ.get("GOOGLE_MAPS_API_KEY")
         if not api_key:
-            # Try to get from demo.py
+            # Try to get from Streamlit secrets
             try:
-                import sys
-                sys.path.append('.')
-                from demo import GOOGLE_MAPS_API_KEY
-                api_key = GOOGLE_MAPS_API_KEY
+                import streamlit as st
+                api_key = st.secrets["GOOGLE_MAPS_API_KEY"]
             except:
                 return f"[Demo] Top attractions in {location}: Museum, Park, Historic Site. (Set GOOGLE_MAPS_API_KEY for real data)"
         
@@ -106,12 +104,10 @@ class TransportationTool:
         # Use Google Maps Places API (requires API key)
         api_key = os.environ.get("GOOGLE_MAPS_API_KEY")
         if not api_key:
-            # Try to get from demo.py
+            # Try to get from Streamlit secrets
             try:
-                import sys
-                sys.path.append('.')
-                from demo import GOOGLE_MAPS_API_KEY
-                api_key = GOOGLE_MAPS_API_KEY
+                import streamlit as st
+                api_key = st.secrets["GOOGLE_MAPS_API_KEY"]
             except:
                 return f"[Demo] Transportation options in {location}: Metro, Bus, Taxi, Bike rental. (Set GOOGLE_MAPS_API_KEY for real data)"
         
@@ -150,12 +146,10 @@ class RestaurantTool:
         # Fallback to API if not found in dataset
         api_key = os.environ.get("GOOGLE_MAPS_API_KEY")
         if not api_key:
-            # Try to get from demo.py
+            # Try to get from Streamlit secrets
             try:
-                import sys
-                sys.path.append('.')
-                from demo import GOOGLE_MAPS_API_KEY
-                api_key = GOOGLE_MAPS_API_KEY
+                import streamlit as st
+                api_key = st.secrets["GOOGLE_MAPS_API_KEY"]
             except:
                 return f"[Demo] Popular restaurants in {location}: Local cuisine, International dining. (Set GOOGLE_MAPS_API_KEY for real data)"
         
@@ -194,12 +188,10 @@ class AccommodationTool:
         # Fallback to API if not found in dataset
         api_key = os.environ.get("GOOGLE_MAPS_API_KEY")
         if not api_key:
-            # Try to get from demo.py
+            # Try to get from Streamlit secrets
             try:
-                import sys
-                sys.path.append('.')
-                from demo import GOOGLE_MAPS_API_KEY
-                api_key = GOOGLE_MAPS_API_KEY
+                import streamlit as st
+                api_key = st.secrets["GOOGLE_MAPS_API_KEY"]
             except:
                 return f"[Demo] Accommodation options in {location}: Hotels, Hostels, Guesthouses. (Set GOOGLE_MAPS_API_KEY for real data)"
         
